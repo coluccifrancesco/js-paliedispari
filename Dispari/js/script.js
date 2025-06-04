@@ -2,93 +2,84 @@
 
 
 // L’utente sceglie pari o dispari e inserisce un numero da 1 a 5. 
-let userOddOrEven = prompt('Pari o dispari? (Ricorda la maiuscola!)');
-let userChoiceType = '';
+let userOddOrEven = prompt('Pari o dispari? (Ricorda la maiuscola!)').toLowerCase();
+console.log(userOddOrEven);
 
-if (userOddOrEven == 'Pari' || userOddOrEven == 'Dispari'){
+// let userChoiceType = '';
+
+// if (userOddOrEven == 'pari' || userOddOrEven == 'dispari'){
    
-    userChoiceType = userOddOrEven;
-    console.log("L'utente ha scelto: " + userChoiceType + '!');
+//     userChoiceType = userOddOrEven;
+//     console.log("L'utente ha scelto: " + userChoiceType + '!');
 
-} else {
+// } else {
    
-    userChoiceType = null;
-    console.log('Riprova');
+//     userChoiceType = null;
+//     console.log('Riprova');
 
-}
+// }
 
 let userNumber = Number(prompt('Inserisci un numero da 1 a 5'));
-let userChoiceNumber = '';
+console.log(userNumber);
+// let userChoiceNumber = '';
 
-if (userNumber < 1 || userNumber > 5){
+// if (userNumber < 1 || userNumber > 5){
  
-    userChoiceNumber = null;
-    console.log('Non fare il fenomeno e leggi la richiesta');
+//     userChoiceNumber = null;
+//     console.log('Non fare il fenomeno e leggi la richiesta');
 
-} else {
+// } else {
 
-    userChoiceNumber = userNumber;
-    console.log("L'utente ha scelto il numero: " + userNumber + '!');
+//     userChoiceNumber = userNumber;
+//     console.log("L'utente ha scelto il numero: " + userNumber + '!');
 
-}
+// }
 
 // Generiamo un numero random (sempre da 1 a 5) per il computer (usando una funzione). 
-function computerGame(){
-
-    let computerMath = Math.floor(Math.random() * 4 + 1);
-    console.log('Il computer ha scelto: ' + computerMath)
-
-    if (userOddOrEven == 'Pari' || userOddOrEven == 'Dispari' && userNumber >= 1 || userNumber < 6){
-
-        return computerMath
-    
-    } else {
-
-        return null
-
-    }
-
+function generateRandomNumber (min, max) {
+  return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
 
-let computerChoice = computerGame();
+let computerChoice = generateRandomNumber(1,5);
+console.log(computerChoice);
 
 // Sommiamo i due numeri.
-let sum = userChoiceNumber + computerChoice; 
+let sum = userNumber + computerChoice; 
 console.log('La somma è: ' + sum);
     
     
 // Stabiliamo se la somma dei due numeri è pari o dispari (usando una funzione)
-function oddOrEvenDecision(){
+function isEven(numb){
     
-    if (sum % 2 == 0 && userChoiceType == 'Pari'){
+    if (numb % 2 == 0){
     
-        return true
+        return 'pari'
     
-    } else if (sum % 2 !== 0 && userChoiceType == 'Dispari'){
-    
-        return true
-    
-    } else {
-
-        return false
-
     }
+
+    return 'dispari'
 }
 
-let verdict = oddOrEvenDecision();
-
+let verdict = isEven(sum);
+console.log(verdict);
 
 // Dichiariamo chi ha vinto.
-if (verdict = true){
-   
-    console.log('Hai vinto la scommessa')
-
-} else if (verdict = false){
-
-    console.log('Hai perso! Riprova premdendo F5')
-
-} else if (userChoiceType == null || userChoiceNumber == null || computerChoice == null) {
-
-    console.log('Hai sbagliato qualcosa, riprova')
-    
+if (verdict === userOddOrEven){
+    console.log('You Win')
+} else {
+    console.log('You lost')
 }
+
+// if (verdict = true){
+   
+//     console.log('Hai vinto la scommessa')
+
+// } else if (verdict = false){
+
+//     console.log('Hai perso! Riprova premdendo F5')
+
+// } else if (userChoiceType == null || userChoiceNumber == null || computerChoice == null) {
+
+//     console.log('Hai sbagliato qualcosa, riprova')
+    
+// }
